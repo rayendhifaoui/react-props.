@@ -1,0 +1,41 @@
+import React from 'react'
+import'./profile.css'
+import { ReactPropTypes } from 'prop-types'
+
+function profile(props) {
+  const styleBtn={backgroungcolor:'#198c4',
+color:'#f1faee',
+frontsize:'20px',
+fontweight:'bold',
+whidth:'200px',
+heitgh:'50px',
+margintop:'10px',
+boxShadow:'0px 5px 10px 0px #457b9d',
+border:'none'},
+styleinfo={color:'#0077b6'}
+return(
+  <div className='containerprofil'>
+    <div className='info'>
+      <h3 style={styleinfo}>{props.user.fullname}</h3>
+      <p>{props.user.bio}</p>
+      <h5 style={styleinfo}>{props.user.profession}</h5>
+    
+  </div>
+  <div className='content'>
+    {props.children}
+    <button style={styleBtn} onClick={()=>props.handlename(props.user)}>click</button>
+  </div>
+
+)
+}
+profile.defaultprops={
+  user:{fullname:'unknown',
+bio:'unknown',
+profession:'unkown'
+}
+
+}
+profile.prototype={
+  user:proptypes.object,
+  handlename:proptypes.func,
+}
